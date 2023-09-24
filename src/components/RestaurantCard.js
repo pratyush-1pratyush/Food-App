@@ -1,5 +1,14 @@
 import { IMG_CDN_URL } from "../config";
-const RestaurantCard = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
+const RestaurantCard = ({ restaurant }) => {
+  const{
+  name,
+  cuisines,
+  cloudinaryImageId,
+  costForTwo,
+  areaName,
+  avgRatingString,
+  sla,
+} = restaurant;
   //console.log(restaurant?.data?.data);
   //const { name, cuisines, cloudinaryImageId, avgRating } = restaurant;
   return (
@@ -7,7 +16,7 @@ const RestaurantCard = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
       <img src={`${IMG_CDN_URL}${cloudinaryImageId}`} />
       <h2 className="font-bold ">{name}</h2>
       <h3>{cuisines?.join(", ")}</h3>
-      <h4>{`${avgRating} ⭐ `}</h4>
+      <h4>{`${avgRatingString} ⭐ `}</h4>
     </div>
   );
 };
