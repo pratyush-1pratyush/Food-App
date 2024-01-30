@@ -5,8 +5,8 @@ export const CAROUSEL_IMG_URL =
   "https://res.cloudinary.com/Swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/";
 
 export const FETCH_MENU_URL =
-  "https://www.Swiggy.com/dapi/menu/v4/full?lat=18.591945&lng=73.73897649999999&menuId=";
-  //"https://corsproxy.io/?https://www.Swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.591945&lng=73.73897649999999&restaurantId=";
+  //"https://www.Swiggy.com/dapi/menu/v4/full?lat=18.591945&lng=73.73897649999999&menuId=";
+  "https://www.Swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.591945&lng=73.73897649999999&restaurantId=";
 
 export const FOODITEM_IMG_URL =
   "https://res.cloudinary.com/Swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
