@@ -11,10 +11,10 @@ const RestaurantMenu = () => {
   //console.log(resId);
 
   const restaurant = useRestaurantMenu(resId);
-  //console.log(restaurant);
-  const itemCards = restaurant?.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
-  console.log(itemCards);
-  const basicInfo = restaurant?.cards[0]?.card?.card?.info;
+  console.log(restaurant,"res");
+  const itemCards = restaurant?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  console.log(itemCards,"cardItem");
+  const basicInfo = restaurant?.cards[2]?.card?.card?.info;
 
   return !restaurant ? (
     <MenuShimmer />
@@ -56,7 +56,7 @@ const RestaurantMenu = () => {
       <div className="px-4 py-4 pt-9 pb-9">
         <h1 className="text-2xl font-bold ">Menu</h1>
         <div>
-          {itemCards.map((item, index) => (
+          {itemCards?.map((item, index) => (
             <>
               <Menu Menu={item}></Menu>
             </>

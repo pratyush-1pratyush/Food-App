@@ -46,7 +46,7 @@ const Body = () => {
   
             // if checkData is not undefined then return it
             if (checkData !== undefined) {
-              console.log(checkData)
+              console.log(checkData,"two")
               return checkData;
             }
           }
@@ -96,9 +96,14 @@ const Body = () => {
               data-testId="search-btn"
               className="bg-slate-500 text-white rounded-md m-1 w-20"
               onClick={() => {
+                console.log(allRestaurants,"all");
+                console.log(searchText,"text")
                 const data = filterData(searchText, allRestaurants);
+                console.log(data,"bahar filter hai");
                 if (data.length) {
-                  setfilteredRestaurants(data);
+                 
+                  setFilteredRestaurants(data);
+                  console.log(filteredRestaurants,"filter hai");
                   setSearchResult(true);
                 } else setSearchResult(false);
               }}
