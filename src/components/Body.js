@@ -29,7 +29,7 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      const response = await fetch(`${corsProxy}https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING`);
+      const response = await fetch("api/proxy");
       // if response is not ok then throw new Error
       if (!response.ok) {
         const err = response.status;
