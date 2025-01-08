@@ -10,10 +10,14 @@ export default async function handler(req, res) {
     try {
       const apiUrl = 'https://www.swiggy.com//dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING' 
       
-      console.log('Constructed API URL:', apiUrl); // Log the constructed URL
+    
       // Fetch data from Swiggy API
       const response = await fetch(apiUrl, {
-        method: req.method,  // Forward the method (GET, POST, etc.)
+        method: 'GET', // Ensure it's a GET request
+      headers: {
+        'User-Agent': 'Mozilla/5.0', // Mimic a browser request
+        'Accept': 'application/json', // Request JSON response
+      },
        
       });
   
