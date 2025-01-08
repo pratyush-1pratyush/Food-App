@@ -29,7 +29,7 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      const response = await fetch("https://food-app-nine-snowy.vercel.app/api/proxy");
+      const response = await fetch("/api/proxy/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
       // if response is not ok then throw new Error
       if (!response.ok) {
         const err = response.status;

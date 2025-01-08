@@ -1,17 +1,33 @@
+// api/proxy.js
 export default async function handler(req, res) {
-    const targetUrl = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING';
-    console.log('Incoming request:', req.method, req.url); 
-    // Fetch data from Swiggy API
-    const response = await fetch(targetUrl);
-    
-    if (!response.ok) {
-      res.status(response.status).json({ error: 'Failed to fetch data' });
-      return;
-    }
+    // Log incoming requests for debugging
+    console.log('Request URL:', req.url);
+    console.log('Request Headers:', req.headers);
   
-    const data = await response.json();
-    
-    // Send the data back to the frontend
-    res.status(200).json(data);
+    // Proxy request to Swiggy API
+    try {
+      const apiUrl = 'https://www.swiggy.com' + req.url.replace('/api', '');  // Remove "/api" from the request URL
+      
+      // Fetch data from Swiggy API
+      const response = await fetch(apiUrl, {
+        method: req.method,  // Forward the method (GET, POST, etc.)
+        headers: {
+          'User-Agent': 'Mozilla/5.0',
+          // You can add other headers if necessary
+        },
+      });
+  
+      // Check if the response is OK
+      if (!response.ok) {
+        throw new Error(`Error fetching data: ${response.statusText}`);
+      }
+  
+      // Parse and return the data as JSON
+      const data = await response.json();
+      res.status(200).json(data);
+    } catch (error) {
+      console.error('Proxy Error:', error);
+      res.status(500).json({ error: 'Failed to fetch data from Swiggy' });
+    }
   }
   
