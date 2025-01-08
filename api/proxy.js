@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     console.log('Request Headers:', req.headers);
     // Proxy request to Swiggy API
     try {
-      const apiUrl = 'https://www.swiggy.com' + req.url.replace('/api/proxy', '');  // Remove "/api" from the request URL
+      const apiUrl = 'https://www.swiggy.com//dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING' 
       
       console.log('Constructed API URL:', apiUrl); // Log the constructed URL
       // Fetch data from Swiggy API
