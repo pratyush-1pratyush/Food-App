@@ -29,7 +29,7 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      const response = await fetch("/api/proxy");
+      const response = await fetch("http://localhost:5000/api/swiggy?lat=12.9351929&lng=77.62448069999999");
       // if response is not ok then throw new Error
       if (!response.ok) {
         const err = response.status;
