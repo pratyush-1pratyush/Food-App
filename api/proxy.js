@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     console.log('Request Headers:', req.headers);
     // Proxy request to Swiggy API
     try {
-      const apiUrl = 'https://www.swiggy.com' + req.url.replace('/api', '');  // Remove "/api" from the request URL
+      const apiUrl = 'https://www.swiggy.com' + req.url.replace('/api/proxy', '');  // Remove "/api" from the request URL
       
       console.log('Constructed API URL:', apiUrl); // Log the constructed URL
       // Fetch data from Swiggy API
