@@ -10,6 +10,8 @@ export const FETCH_MENU_URL =
 
 export const FOODITEM_IMG_URL =
   "https://res.cloudinary.com/Swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+
+export const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 // export const restaurantList = [
 //   {
 //     cardType: "restaurant",
