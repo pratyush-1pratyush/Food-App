@@ -8,7 +8,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.js";
 import MenuShimmer from "./MenuShimmer";
-import {corsProxy} from "../config"
+
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);

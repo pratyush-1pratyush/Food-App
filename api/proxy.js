@@ -3,18 +3,18 @@ export default async function handler(req, res) {
     // Log incoming requests for debugging
     console.log('Request URL:', req.url);
     console.log('Request Headers:', req.headers);
-  
+    console.log('Handler is triggered');
+    console.log('Request URL:', req.url);
+    console.log('Request Headers:', req.headers);
     // Proxy request to Swiggy API
     try {
       const apiUrl = 'https://www.swiggy.com' + req.url.replace('/api', '');  // Remove "/api" from the request URL
       
+      console.log('Constructed API URL:', apiUrl); // Log the constructed URL
       // Fetch data from Swiggy API
       const response = await fetch(apiUrl, {
         method: req.method,  // Forward the method (GET, POST, etc.)
-        headers: {
-          'User-Agent': 'Mozilla/5.0',
-          // You can add other headers if necessary
-        },
+       
       });
   
       // Check if the response is OK
