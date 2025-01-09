@@ -10,3 +10,4 @@ Features:-
   4.Add to cart using Redux
   5.Clear cart
   6.Online/Offline Functionality
+  7.Controable Accordian inside Instamart section
