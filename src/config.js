@@ -4,14 +4,15 @@ export const IMG_CDN_URL =
 export const CAROUSEL_IMG_URL =
   "https://res.cloudinary.com/Swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/";
 
-export const FETCH_MENU_URL =
-  //"https://www.Swiggy.com/dapi/menu/v4/full?lat=18.591945&lng=73.73897649999999&menuId=";
-  "https://www.Swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.591945&lng=73.73897649999999&restaurantId=";
+  export const FETCH_MENU_URL =
+  "https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId=";
+export const FETCH_ALL_RESTAURANTS =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
 
 export const FOODITEM_IMG_URL =
   "https://res.cloudinary.com/Swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
 
-export const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+
 // export const restaurantList = [
 //   {
 //     cardType: "restaurant",

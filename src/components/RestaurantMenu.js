@@ -11,34 +11,33 @@ const RestaurantMenu = () => {
   //console.log(resId);
 
   const restaurant = useRestaurantMenu(resId);
-  console.log(restaurant,"res");
-  const itemCards = restaurant?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  console.log(itemCards,"cardItem");
-  const basicInfo = restaurant?.cards[2]?.card?.card?.info;
+  //console.log(restaurant,"restaurant RestaurantMenu comp");
+  //const itemCards = restaurant?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+ // console.log(itemCards,"cardItem");
+  //const basicInfo = restaurant?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+  //console.log(basicInfo,"city")
 
   return !restaurant ? (
     <MenuShimmer />
   ) : (
     <div
-      data-testId="Menu"
+      data-testid="Menu"
       className="max-w-screen-md min-h-[90%] mt-0 mx-auto my-auto mb-0"
     >
       <div className="">
-        <p className="text-xs mt-2">
-          Home / {basicInfo.city} / {basicInfo.areaName} / {basicInfo.name}{" "}
-        </p>
+       
         <div className="flex justify-between px-4 py-4 pt-9 pb-9 border-solid border-b-2">
           <div className="">
-            <h1 className="font-bold text-2xl">{basicInfo.name}</h1>
+            <h1 className="font-bold text-2xl">{restaurant.name}</h1>
 
-            <p className="text-sm">{basicInfo.cuisines.join(", ")}</p>
+            <p className="text-sm">{restaurant?.cuisines.join(", ")}</p>
             <p className="text-sm">
-              {basicInfo.areaName}, {basicInfo.sla.lastMileTravel} km
+            📍 {restaurant?.area}, {restaurant?.city}
             </p>
           </div>
           <div className="border-slate-200 border rounded p-1 text-xs text-center h-14 mt-auto mb-auto flex-col">
-            <div className="border-b-2 p-1">{basicInfo.avgRating} ⭐</div>
-            <div className="p-1">{basicInfo.totalRatingsString}</div>
+            <div className="border-b-2 p-1">{restaurant?.avgRatingString} ⭐</div>
+            <div className="p-1">{restaurant?.costForTwoMsg}</div>
           </div>
 
           {/* <img
@@ -56,10 +55,10 @@ const RestaurantMenu = () => {
       <div className="px-4 py-4 pt-9 pb-9">
         <h1 className="text-2xl font-bold ">Menu</h1>
         <div>
-          {itemCards?.map((item, index) => (
-            <>
+          {Object.values(restaurant?.menu?.items).map((item, index) => (
+            <div key={index}>
               <Menu Menu={item}></Menu>
-            </>
+            </div>
           ))}
         </div>
       </div>

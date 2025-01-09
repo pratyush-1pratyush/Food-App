@@ -8,7 +8,8 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper.js";
 import MenuShimmer from "./MenuShimmer";
-
+import localData from "../resData.json"
+import { ALL_RESTAURANT_DATA, ALL_RESTAURANTS_LIST } from "../mocks/mockData";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -16,33 +17,25 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState(true);
 
-  console.log("initialrender");
-  console.log("fghjkl")
+  console.log("initialRender");
+  
 
   useEffect(() => {
-    //API Call
-    getRestaurants();
-    
+    setFilteredRestaurants(ALL_RESTAURANTS_LIST);
+    setAllRestaurants(ALL_RESTAURANTS_LIST);
+   //api call
+    // getRestaurants(setAllRestaurants, setFilteredRestaurants);
   }, []);
 
   
 
-  async function getRestaurants() {
-    try {
-      const response = await fetch("http://localhost:5000/api/swiggy?lat=12.9351929&lng=77.62448069999999");
-      // if response is not ok then throw new Error
-      if (!response.ok) {
-        const err = response.status;
-        throw new Error(err);
-      } else {
-        const json = await response.json();
-  
-        // initialize checkJsonData() function to check Swiggy Restaurant data
+  /*async function getRestaurants() {
+    
         async function checkJsonData(jsonData) {
           for (let i = 0; i < jsonData?.data?.cards.length; i++) {
   
             // initialize checkData for Swiggy Restaurant data
-            let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+            let checkData = localData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
             console.log(checkData,"one")
   
             // if checkData is not undefined then return it
@@ -54,17 +47,14 @@ const Body = () => {
         }
   
         // call the checkJsonData() function which return Swiggy Restaurant data
-        const resData = await checkJsonData(json);
+        const resData = await checkJsonData( ALL_RESTAURANTS_LIST );
   
         // update the state variable restaurants with Swiggy API data
-        setAllRestaurants(resData);
-        console.log(resData)
-        setFilteredRestaurants(resData);
-      }
-    } catch (error) {
-      console.error(error); // show error in console
-    }
-  }
+        //setAllRestaurants(ALL_RESTAURANTS_LIST);
+        //console.log(resData)
+        //setFilteredRestaurants(ALL_RESTAURANTS_LIST);
+      }*/
+    
 
   if (!allRestaurants) return null;
 
@@ -84,7 +74,7 @@ const Body = () => {
          
           <div className="mt-1 flex justify-center mr-2">
             <input
-              data-testId="search-input"
+              data-testid="search-input"
               className="m-1 bg-slate-100 p-2 rounded-md focus-within:purple border-slate-500 border"
               type="text"
               placeholder="Search"
@@ -94,17 +84,12 @@ const Body = () => {
               }}
             />
             <button
-              data-testId="search-btn"
+             data-testid="search-btn"
               className="bg-slate-500 text-white rounded-md m-1 w-20"
               onClick={() => {
-                console.log(allRestaurants,"all");
-                console.log(searchText,"text")
                 const data = filterData(searchText, allRestaurants);
-                console.log(data,"bahar filter hai");
                 if (data.length) {
-                 
                   setFilteredRestaurants(data);
-                  console.log(filteredRestaurants,"filter hai");
                   setSearchResult(true);
                 } else setSearchResult(false);
               }}
@@ -118,12 +103,15 @@ const Body = () => {
           className="hidden"
           src="https://cors-anywhere.herokuapp.com/corsdemo"
         ></iframe> */}
-        <div data-testId="res-list" className="flex w-full flex-wrap justify-center">
+        <div 
+        data-testid="res-list" 
+        className="flex w-full flex-wrap justify-center">
           {searchResult ? (
             filteredRestaurants.map((restaurant) => {
+              //console.log(restaurant,"individual res data");
               return (
-                <Link to={"/restaurant/" + restaurant?.info?.id}key={restaurant.info.id}>
-                   <RestaurantCard  restaurant={restaurant?.info}  /> 
+                <Link to={"/restaurant/" + restaurant?.data?.id}key={restaurant.data.id}>
+                   <RestaurantCard  restaurant={restaurant?.data}  /> 
                   
                 </Link>
               );

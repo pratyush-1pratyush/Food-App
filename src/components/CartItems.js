@@ -4,15 +4,15 @@ const CartItem = ({ foodItem }) => {
     <>
       <div className="flex justify-between items-center border-b-2 p-3">
         <div>
-          <h2 className="text-base font-bold">{foodItem.card.info.name}</h2>
+          <h2 className="text-base font-bold">{foodItem?.name}</h2>
           <p>
             ₹{" "}
-            {foodItem.card.info.price / 100 ||
-              foodItem.card.info.defaultPrice / 100}
+            {foodItem?.price / 100 ||
+              foodItem?.defaultPrice / 100}
           </p>
         </div>
         <div className="flex flex-col items-center w-40 h-15">
-          {foodItem?.card?.info?.imageId && (
+          {foodItem?.imageId && (
             <img src={FOODITEM_IMG_URL + foodItem?.card?.info?.imageId} />
           )}
           {/* <button

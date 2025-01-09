@@ -7,31 +7,33 @@ const itemCard = ({ foodItem }) => {
   const dispatch = useDispatch();
   const [addbtn, setAddBtn] = useState(false);
   const handleAddItem = (foodItem) => {
-    //console.log(foodItem);
+ 
     dispatch(addItem(foodItem));
     setAddBtn(true);
   };
+  
   return (
     <>
       <div className="flex justify-between items-center border-b-2 p-3">
+      
         <div>
-          <h2 className="text-base font-bold">{foodItem.card.info.name}</h2>
+          <h2 className="text-base font-bold">{foodItem.name}</h2>
           <p>
             ₹{" "}
-            {foodItem.card.info.price / 100 ||
-              foodItem.card.info.defaultPrice / 100}
+            {foodItem.price / 100 ||
+              foodItem.defaultPrice / 100}
           </p>
           <div className="text-slate-600 text-sm">
-            {foodItem.card.info.description}
+            {foodItem.description}
           </div>
         </div>
         <div className="flex flex-col items-center w-40 h-15">
-          {foodItem?.card?.info?.imageId && (
-            <img src={FOODITEM_IMG_URL + foodItem?.card?.info?.imageId} />
+          {foodItem && (
+            <img src={FOODITEM_IMG_URL + foodItem?.imageId} alt="" />
           )}
 
           <button
-            data-testId="addbtn"
+            data-testid="addbtn"
             onClick={() => handleAddItem(foodItem)}
             className="w-20 h-8 border border-slate-400 rounded text-green-600 mt-1"
           >

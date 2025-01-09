@@ -9,7 +9,7 @@ const Cart = () => {
   cart.map((item) => {
     //console.log(item);
     let price =
-      item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100;
+      item?.price / 100 || item?.defaultPrice / 100;
     totalPrice += price;
     return totalPrice;
   });

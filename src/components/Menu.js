@@ -4,8 +4,9 @@ import { BsCaretDown, BsCaretUp } from "react-icons/bs";
 import { IconContext } from "react-icons";
 
 const Menu = ({ Menu }) => {
-  const itemcards = Menu?.card?.card?.itemCards;
-  console.log(Menu);
+  const itemcards = Menu;
+  //console.log(itemcards,"menu");
+  
   const [isVisible, setIsVisible] = useState("false");
   // console.log(isVisible);
   return (
@@ -13,7 +14,7 @@ const Menu = ({ Menu }) => {
       <div className="border-b-2">
         <div className="flex justify-between m-3">
           <h2 className="text-lg font-bold">
-            {Menu?.card?.card?.title}
+            {itemcards?.name}
           </h2>
           {itemcards && isVisible == "true" && (
             <button onClick={() => setIsVisible("false")}>
@@ -35,10 +36,11 @@ const Menu = ({ Menu }) => {
           )}
         </div>
         {isVisible == "false" &&
-          itemcards?.map((item) => (
-            //console.log(item)
-            <ItemCard foodItem={item}></ItemCard>
-          ))}
+        
+            <ItemCard foodItem={itemcards}></ItemCard>
+
+            
+          }
       </div>
     </>
   );
